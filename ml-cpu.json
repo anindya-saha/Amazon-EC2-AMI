@@ -1,0 +1,35 @@
+{
+  "variables": {
+    "aws_access_key": "{{env `AWS_ACCESS_KEY_ID`}}",
+    "aws_secret_key": "{{env `AWS_SECURE_ACCESS_KEY`}}",
+    "spot_price": "0.50"
+  },
+  "builders": [{
+    "type": "amazon-ebs",
+    "access_key": "{{user `aws_access_key`}}",
+    "secret_key": "{{user `aws_secret_key`}}",
+    "ami_name": "ML-Kaggle-No-GPU {{timestamp}}",
+	"ami_description": "Anindya's Data Science Machine - anaconda2 xgboost theano keras",
+    "instance_type": "cc2.8xlarge",
+    "region": "us-east-1",
+    "source_ami": "ami-d05e75b8",
+    "ssh_username": "ubuntu",
+    "ami_block_device_mappings": [{
+      "device_name": "/dev/sda1",
+      "volume_type": "gp2",
+      "delete_on_termination": true,
+      "volume_size": 24
+    }],
+    "launch_block_device_mappings": [{
+      "device_name": "/dev/sda1",
+      "volume_type": "gp2",
+      "delete_on_termination": true,
+      "volume_size": 24
+    }]
+  }],
+  "provisioners": [
+    {"type": "shell", "script": "shell/harden.sh"},
+    {"type": "shell", "script": "shell/setup.sh"},
+    {"type": "shell", "script": "shell/notebook_setup.sh"}
+  ]
+}
