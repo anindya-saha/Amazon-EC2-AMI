@@ -12,20 +12,23 @@ cd $HOME
 ANACONDA2_INSTALLER=Anaconda2-2.4.1-Linux-x86_64.sh
 ANACONDA2_HOME=$HOME/anaconda2
 
-# install Anaconda2, most dependencies (except theano, keras, xgboost)
+# install Anaconda2, most dependencies (except theano, keras, lasagne, xgboost)
 wget https://repo.continuum.io/archive/$ANACONDA2_INSTALLER
 bash $ANACONDA2_INSTALLER -b -p $ANACONDA2_HOME -f
 rm -f $ANACONDA2_INSTALLER
 
 # Refer to http://docs.continuum.io/anaconda/pkg-docs for packages available in the installer
 $ANACONDA2_HOME/bin/conda install -y ipython ipython-notebook seaborn supervisor
-
 #$CONDA install -y ipython ipython-notebook pandas numpy scipy matplotlib scikit-learn supervisor cython nltk
 
 PIP=$ANACONDA2_HOME/bin/pip
 
 # install bleeding edge of theano
 $PIP install --upgrade --no-deps git+git://github.com/Theano/Theano.git
+
+# install bleeding edge of lasagne
+#$PIP install --upgrade https://github.com/Lasagne/Lasagne/archive/master.zip
+$PIP install --upgrade --no-deps git+git://github.com/Lasagne/Lasagne.git
 
 # install keras
 $PIP install keras
@@ -49,7 +52,9 @@ device=cpu
 mode=FAST_RUN
 
 [nvcc]
-fastmath=True
+fastmath=False
+
+blas.ldflags='-L/usr/lib/ -lblas'
 EOF
 
 cat >> $HOME/.bashrc <<EOF

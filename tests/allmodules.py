@@ -1,3 +1,5 @@
+import numpy as np
+
 import re, nltk
 from nltk.stem.porter import PorterStemmer
 
@@ -30,6 +32,13 @@ from keras.regularizers import l2, l1l2, activity_l1l2
 from keras.layers.advanced_activations import PReLU
 from keras.layers.normalization import BatchNormalization
 from keras.callbacks import History, EarlyStopping
+
+# lasagne tests
+import theano
+import theano.tensor as T
+
+import lasagne
+lasagne.__version__
 
 # BeautifulSoup tests
 from bs4 import BeautifulSoup
