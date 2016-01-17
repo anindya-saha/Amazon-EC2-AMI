@@ -7,8 +7,8 @@ export PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
 export LD_LIBRARY_PATH=/home/ubuntu/anaconda2/bin/python
 
 IPYTHON=$HOME/anaconda2/bin/ipython
-eval $IPYTHON profile create keras
-CONFIG_PATH=$($IPYTHON locate profile keras)/ipython_notebook_config.py
+eval $IPYTHON profile create default
+CONFIG_PATH=$($IPYTHON locate profile default)/ipython_notebook_config.py
 
 cat > $CONFIG_PATH <<EOF
 c = get_config()
@@ -46,7 +46,7 @@ serverurl=unix:///tmp/supervisor.sock         ; use a unix:// URL  for a unix so
 directory=/home/ubuntu
 environment=HOME="/home/ubuntu",USER="ubuntu",PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
 user=ubuntu
-command=/home/ubuntu/anaconda2/bin/ipython notebook --config /home/ubuntu/.ipython/profile_keras/ipython_notebook_config.py
+command=/home/ubuntu/anaconda2/bin/ipython notebook --config /home/ubuntu/.ipython/profile_default/ipython_notebook_config.py
 stderr_logfile = /tmp/ipython-stderr.log
 stdout_logfile = /tmp/ipython-stdout.log
 EOF

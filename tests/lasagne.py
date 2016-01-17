@@ -352,8 +352,8 @@ if __name__ == '__main__':
         print("EPOCHS: number of training epochs to perform (default: 500)")
     else:
         kwargs = {}
-        if len(sys.argv) > 1:
-            kwargs['model'] = sys.argv[1]
-        if len(sys.argv) > 2:
-            kwargs['num_epochs'] = int(sys.argv[2])
+        #if len(sys.argv) > 1:
+            #kwargs['model'] = sys.argv[1]
+        #if len(sys.argv) > 2:
+            #kwargs['num_epochs'] = int(sys.argv[2])
         main(**kwargs)

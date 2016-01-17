@@ -9,7 +9,7 @@
     "access_key": "{{user `aws_access_key`}}",
     "secret_key": "{{user `aws_secret_key`}}",
     "ami_name": "ML-Kaggle-No-GPU {{timestamp}}",
-	"ami_description": "Anindya's Data Science Machine - anaconda2 theano keras lasagne xgboost",
+	"ami_description": "Anindya's Non GPU Kaggle Machine - anaconda2 theano keras lasagne xgboost",
     "instance_type": "m4.large",
     "region": "us-east-1",
     "source_ami": "ami-d05e75b8",
